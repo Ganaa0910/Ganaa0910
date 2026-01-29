@@ -3,8 +3,8 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap');
       
-      /* Background */
-      .bg { fill: #0a0a0a; }
+      /* Background - transparent for GitHub */
+      .bg { fill: transparent; }
       
       /* 910 Main Text */
       .logo {
