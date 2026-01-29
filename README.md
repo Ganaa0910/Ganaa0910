@@ -1,45 +1,107 @@
-# Hey, I'm Gray 👋
-
-**Full-Stack Engineer & Infrastructure Builder**
-
-I design systems that scale and ship products that work. Currently deep in building tools that bridge content and code.
-
----
-
-### Tech Stack
-
-**Frontend**  
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
-
-**Backend**  
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![tRPC](https://img.shields.io/badge/tRPC-2596BE?style=flat&logo=trpc&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![Ruby on Rails](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=flat&logo=ruby-on-rails&logoColor=white)
-
-**Web3**  
-![Viem](https://img.shields.io/badge/Viem-1C1C1C?style=flat&logoColor=white)
-![Wagmi](https://img.shields.io/badge/Wagmi-1C1C1C?style=flat&logoColor=white)
-
----
-
-### What I'm Building
-
-Systems that think in components and scale with intention. More soon.
-
----
-
-### Let's Connect
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gan-erdene-mishigsuren-854290329/)
-
----
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=24&duration=3000&pause=1000&color=A1A1AA&center=true&vCenter=true&repeat=false&width=435&lines=gray" alt="gray" />
+</p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ganaa0910&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=ffffff&icon_color=58a6ff&text_color=c9d1d9" alt="GitHub Stats" />
+  <sub>infrastructure builder · creative developer · ulaanbaatar</sub>
+</p>
+
+---
+
+<br/>
+
+```
+building tools that bridge content and code
+currently deep in animations, scroll experiences, and component systems
+```
+
+<br/>
+
+<table align="center">
+<tr>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=react" width="36" height="36" alt="React" />
+<br><sub>React</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=nextjs" width="36" height="36" alt="Next.js" />
+<br><sub>Next</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=ts" width="36" height="36" alt="TypeScript" />
+<br><sub>TS</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=svelte" width="36" height="36" alt="Svelte" />
+<br><sub>Svelte</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=tailwind" width="36" height="36" alt="Tailwind" />
+<br><sub>Tailwind</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=prisma" width="36" height="36" alt="Prisma" />
+<br><sub>Prisma</sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=postgres" width="36" height="36" alt="PostgreSQL" />
+<br><sub>Postgres</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=rails" width="36" height="36" alt="Rails" />
+<br><sub>Rails</sub>
+</td>
+<td align="center" width="96">
+<img src="https://skillicons.dev/icons?i=threejs" width="36" height="36" alt="Three.js" />
+<br><sub>Three.js</sub>
+</td>
+<td align="center" width="96">
+<img src="https://raw.githubusercontent.com/juliangarnier/anime/master/documentation/assets/img/anime-mini-logo.svg" width="36" height="36" alt="AnimeJS" />
+<br><sub>AnimeJS</sub>
+</td>
+<td align="center" width="96">
+<img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" width="36" height="36" alt="GSAP" />
+<br><sub>GSAP</sub>
+</td>
+<td align="center" width="96">
+<img src="https://framerusercontent.com/images/48ha9ZR9oZQGQ6gZ8YUfElP3T0A.png" width="36" height="36" alt="Framer" />
+<br><sub>Framer</sub>
+</td>
+</tr>
+</table>
+
+<br/>
+
+---
+
+<br/>
+
+<p align="center">
+  <a href="https://910.studio">
+    <img src="https://img.shields.io/badge/910.studio-0a0a0a?style=for-the-badge&logoColor=white" alt="910.studio" />
+  </a>
+</p>
+
+<p align="center">
+  <sub>custom, soul-forged websites for artists and creatives</sub>
+</p>
+
+<br/>
+
+---
+
+<br/>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/gan-erdene-mishigsuren-854290329/">
+    <img src="https://skillicons.dev/icons?i=linkedin" width="28" height="28" alt="LinkedIn" />
+  </a>
+</p>
+
+<br/>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=ganaa0910&show_icons=true&hide_border=true&bg_color=0a0a0a&title_color=a1a1aa&icon_color=a1a1aa&text_color=71717a&hide=contribs&hide_title=true" alt="stats" />
 </p>
