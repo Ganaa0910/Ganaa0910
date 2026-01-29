@@ -6,5 +6,5 @@
 
 <p align="center">
   <a href="https://910.studio">910.studio</a> · 
-  <a href="https://linkedin.com/in/gan-erdene-mishigsuren-854290329">linkedin</a> · 
+  <a href="https://linkedin.com/in/gan-erdene-mishigsuren-854290329">linkedin</a>
 </p>
