@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap');
+      
+      /* Background - GitHub dark */
+      .bg { fill: #0D1117; }
+      
+      /* 910 Main Text - BRIGHTER */
+      .logo {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 140px;
+        font-weight: 700;
+        fill: transparent;
+        stroke: #e4e4e7;
+        stroke-width: 2;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: drawText 3s ease-out forwards;
+      }
+      
+      .logo-fill {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 140px;
+        font-weight: 700;
+        fill: #fafafa;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 2.5s forwards;
+      }
+      
+      .logo-glow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 140px;
+        font-weight: 700;
+        fill: #fafafa;
+        opacity: 0;
+        filter: blur(25px);
+        animation: glowPulse 4s ease-in-out 3s infinite;
+      }
+      
+      /* Scan Line */
+      .scanline {
+        fill: rgba(250, 250, 250, 0.02);
+        animation: scan 8s linear infinite;
+      }
+      
+      /* Horizontal Lines - brighter */
+      .h-line {
+        stroke: #3f3f46;
+        stroke-width: 1;
+        stroke-dasharray: 800;
+        stroke-dashoffset: 800;
+        animation: drawLine 2s ease-out forwards;
+      }
+      
+      .h-line-1 { animation-delay: 0.5s; }
+      .h-line-2 { animation-delay: 0.7s; }
+      
+      /* Cursor - bright white */
+      .cursor {
+        fill: #fafafa;
+        opacity: 0;
+        animation: cursorBlink 1s step-end 3s infinite;
+      }
+      
+      /* Subtitle cycling - brighter */
+      .sub-1, .sub-2 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 16px;
+        letter-spacing: 8px;
+        fill: #a1a1aa;
+      }
+      
+      .sub-1 {
+        opacity: 0;
+        animation: textCycle1 8s ease-in-out 3.5s infinite;
+      }
+      
+      .sub-2 {
+        opacity: 0;
+        animation: textCycle2 8s ease-in-out 3.5s infinite;
+      }
+      
+      /* Corner Elements - brighter */
+      .corner-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        fill: #71717a;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 4s forwards;
+      }
+      
+      /* Floating Particles - brighter */
+      .particle {
+        fill: #d4d4d8;
+        opacity: 0;
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .p1 { animation-delay: 0s; }
+      .p2 { animation-delay: 1s; }
+      .p3 { animation-delay: 2s; }
+      .p4 { animation-delay: 3s; }
+      .p5 { animation-delay: 4s; }
+      
+      /* The Duality Text - brighter */
+      .duality {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        fill: #71717a;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 4.5s forwards;
+      }
+      
+      .duality-highlight {
+        fill: #a1a1aa;
+      }
+      
+      /* Vertical Line */
+      .v-line {
+        stroke: #3f3f46;
+        stroke-width: 1;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: drawLineV 1.5s ease-out 4s forwards;
+      }
+      
+      /* Bottom Quote - brighter */
+      .quote {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 13px;
+        fill: #52525b;
+        font-style: italic;
+        opacity: 0;
+        animation: fadeIn 1.5s ease-out 5s forwards;
+      }
+      
+      /* KEYFRAMES */
+      @keyframes drawText {
+        to { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes glowPulse {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 0.2; }
+      }
+      
+      @keyframes scan {
+        0% { transform: translateY(-400px); }
+        100% { transform: translateY(400px); }
+      }
+      
+      @keyframes drawLine {
+        to { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes drawLineV {
+        to { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes cursorBlink {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes textCycle1 {
+        0%, 45% { opacity: 1; }
+        50%, 95% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      @keyframes textCycle2 {
+        0%, 45% { opacity: 0; }
+        50%, 95% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      
+      @keyframes float {
+        0%, 100% { 
+          opacity: 0;
+          transform: translateY(0px);
+        }
+        10% { opacity: 0.8; }
+        90% { opacity: 0.8; }
+        50% { 
+          transform: translateY(-30px);
+        }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background - GitHub dark -->
+  <rect class="bg" width="800" height="400"/>
+  
+  <!-- Scan Line Effect -->
+  <rect class="scanline" x="0" y="0" width="800" height="8"/>
+  
+  <!-- Horizontal Lines -->
+  <line class="h-line h-line-1" x1="0" y1="80" x2="800" y2="80"/>
+  <line class="h-line h-line-2" x1="0" y1="300" x2="800" y2="300"/>
+  
+  <!-- Floating Particles -->
+  <circle class="particle p1" cx="150" cy="150" r="2"/>
+  <circle class="particle p2" cx="650" cy="180" r="1.5"/>
+  <circle class="particle p3" cx="200" cy="280" r="1.5"/>
+  <circle class="particle p4" cx="600" cy="250" r="2"/>
+  <circle class="particle p5" cx="400" cy="320" r="1.5"/>
+  
+  <!-- Main 910 Logo - BIGGER -->
+  <text class="logo-glow" x="400" y="220" text-anchor="middle">910</text>
+  <text class="logo" x="400" y="220" text-anchor="middle">910</text>
+  <text class="logo-fill" x="400" y="220" text-anchor="middle">910</text>
+  
+  <!-- Cursor after 910 -->
+  <rect class="cursor" x="545" y="145" width="4" height="60"/>
+  
+  <!-- Cycling Subtitle -->
+  <text class="sub-1" x="400" y="265" text-anchor="middle">INFRASTRUCTURE</text>
+  <text class="sub-2" x="400" y="265" text-anchor="middle">CREATIVE DEV</text>
+  
+  <!-- Corner Elements -->
+  <text class="corner-text" x="30" y="40">gray</text>
+  <text class="corner-text" x="30" y="58">ulaanbaatar</text>
+  
+  <text class="corner-text" x="770" y="40" text-anchor="end">2026</text>
+  <text class="corner-text" x="770" y="58" text-anchor="end">910.studio</text>
+  
+  <!-- Duality Section -->
+  <line class="v-line" x1="400" y1="315" x2="400" y2="375"/>
+  
+  <text class="duality" x="300" y="340" text-anchor="end">
+    <tspan class="duality-highlight">910build</tspan>
+  </text>
+  <text class="duality" x="300" y="360" text-anchor="end">systems that scale</text>
+  
+  <text class="duality" x="500" y="340">
+    <tspan class="duality-highlight">910studio</tspan>
+  </text>
+  <text class="duality" x="500" y="360">craft that breathes</text>
+  
+  <!-- Bottom Quote -->
+  <text class="quote" x="400" y="390" text-anchor="middle">"building the tools, then breaking them beautifully"</text>
+  
+</svg>
