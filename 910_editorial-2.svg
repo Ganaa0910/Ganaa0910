@@ -1,0 +1,299 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap');
+      
+      .bg { fill: #0D1117; }
+      
+      /* Giant 910 - off center, cropped feeling */
+      .giant-9 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 400px;
+        font-weight: 700;
+        fill: transparent;
+        stroke: #1a1a1a;
+        stroke-width: 1;
+        opacity: 0;
+        animation: fadeInSlow 2s ease-out 0.5s forwards;
+      }
+      
+      /* Main 910 */
+      .logo-main {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 180px;
+        font-weight: 700;
+        fill: #fafafa;
+        opacity: 0;
+        animation: revealLogo 1.5s ease-out 1s forwards;
+      }
+      
+      .logo-glow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 180px;
+        font-weight: 700;
+        fill: #fafafa;
+        filter: blur(60px);
+        opacity: 0;
+        animation: glowBreath 5s ease-in-out 2s infinite;
+      }
+      
+      /* Glitch layers */
+      .glitch-1 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 180px;
+        font-weight: 700;
+        fill: #00ffff;
+        opacity: 0;
+        animation: glitchA 12s ease-in-out 3s infinite;
+      }
+      
+      .glitch-2 {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 180px;
+        font-weight: 700;
+        fill: #ff0040;
+        opacity: 0;
+        animation: glitchB 12s ease-in-out 3s infinite;
+      }
+      
+      /* Editorial text - different weights, sizes */
+      .editorial-large {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 12px;
+        fill: #525252;
+        opacity: 0;
+        animation: fadeInSlow 1.5s ease-out 2s forwards;
+      }
+      
+      .editorial-tiny {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px;
+        font-weight: 400;
+        fill: #3f3f46;
+        opacity: 0;
+        animation: fadeInSlow 1.5s ease-out 2.5s forwards;
+      }
+      
+      .editorial-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        fill: #71717a;
+        opacity: 0;
+        animation: fadeInSlow 1.2s ease-out 2.8s forwards;
+      }
+      
+      /* Vertical text */
+      .vertical-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 3px;
+        fill: #3f3f46;
+        writing-mode: vertical-rl;
+        opacity: 0;
+        animation: fadeInSlow 1.5s ease-out 3s forwards;
+      }
+      
+      /* The weird element - rotated text */
+      .rotated {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        fill: #27272a;
+        letter-spacing: 2px;
+        opacity: 0;
+        animation: fadeInSlow 2s ease-out 3.5s forwards;
+      }
+      
+      /* Stack - editorial style */
+      .stack-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        fill: #52525b;
+        opacity: 0;
+        animation: fadeInSlow 1s ease-out 3.2s forwards;
+      }
+      
+      .stack-items {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        font-weight: 400;
+        fill: #3f3f46;
+        opacity: 0;
+        animation: fadeInSlow 1s ease-out forwards;
+      }
+      
+      .si-1 { animation-delay: 3.4s; }
+      .si-2 { animation-delay: 3.6s; }
+      .si-3 { animation-delay: 3.8s; }
+      
+      /* Duality - asymmetric */
+      .duality-main {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        fill: #a1a1aa;
+        opacity: 0;
+        animation: fadeInSlow 1s ease-out 4s forwards;
+      }
+      
+      .duality-sub {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        fill: #525252;
+        opacity: 0;
+        animation: fadeInSlow 1s ease-out 4.2s forwards;
+      }
+      
+      /* Line elements */
+      .line-h {
+        stroke: #1f1f1f;
+        stroke-width: 1;
+        opacity: 0;
+        animation: fadeInSlow 1.5s ease-out 2s forwards;
+      }
+      
+      .line-v {
+        stroke: #1f1f1f;
+        stroke-width: 1;
+        opacity: 0;
+        animation: drawLineV 1.5s ease-out 2.5s forwards;
+      }
+      
+      /* Quote - bottom */
+      .quote {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        fill: #3f3f46;
+        font-style: italic;
+        opacity: 0;
+        animation: fadeInSlow 1.5s ease-out 4.5s forwards;
+      }
+      
+      /* Issue number - magazine style */
+      .issue {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 72px;
+        font-weight: 700;
+        fill: none;
+        stroke: #1a1a1a;
+        stroke-width: 1;
+        opacity: 0;
+        animation: fadeInSlow 2s ease-out 1s forwards;
+      }
+      
+      /* Links */
+      .link-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9px;
+        fill: #3f3f46;
+        letter-spacing: 2px;
+        opacity: 0;
+        animation: fadeInSlow 1s ease-out 5s forwards;
+      }
+      
+      /* KEYFRAMES */
+      @keyframes fadeInSlow {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes revealLogo {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes glowBreath {
+        0%, 100% { opacity: 0.05; }
+        50% { opacity: 0.15; }
+      }
+      
+      @keyframes glitchA {
+        0%, 88%, 92%, 96%, 100% { opacity: 0; transform: translateX(0); }
+        89% { opacity: 0.6; transform: translateX(-5px); }
+        91% { opacity: 0.3; transform: translateX(3px); }
+        95% { opacity: 0.4; transform: translateX(-2px); }
+      }
+      
+      @keyframes glitchB {
+        0%, 88%, 92%, 96%, 100% { opacity: 0; transform: translateX(0); }
+        90% { opacity: 0.5; transform: translateX(5px); }
+        93% { opacity: 0.4; transform: translateX(-3px); }
+        95% { opacity: 0.2; transform: translateX(2px); }
+      }
+      
+      @keyframes drawLineV {
+        from { opacity: 0; stroke-dasharray: 200; stroke-dashoffset: 200; }
+        to { opacity: 1; stroke-dashoffset: 0; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="bg" width="800" height="900"/>
+  
+  <!-- Giant background 9 - cropped, barely visible -->
+  <text class="giant-9" x="-80" y="450">9</text>
+  
+  <!-- Issue number - magazine style, top right -->
+  <text class="issue" x="680" y="120" text-anchor="end">01</text>
+  
+  <!-- Top left - editorial info -->
+  <text class="editorial-large" x="50" y="60">GRAY</text>
+  <text class="editorial-tiny" x="50" y="80">UB, MONGOLIA</text>
+  <text class="editorial-tiny" x="50" y="95">23 Y/O</text>
+  
+  <!-- Horizontal line -->
+  <line class="line-h" x1="50" y1="120" x2="350" y2="120"/>
+  
+  <!-- Main 910 - slightly off center left -->
+  <text class="logo-glow" x="280" y="380" text-anchor="middle">910</text>
+  <text class="glitch-1" x="280" y="380" text-anchor="middle">910</text>
+  <text class="glitch-2" x="280" y="380" text-anchor="middle">910</text>
+  <text class="logo-main" x="280" y="380" text-anchor="middle">910</text>
+  
+  <!-- Subtitle - offset right -->
+  <text class="editorial-label" x="480" y="340">INFRASTRUCTURE</text>
+  <text class="editorial-label" x="480" y="358">BUILDER</text>
+  <text class="editorial-tiny" x="480" y="385">×</text>
+  <text class="editorial-label" x="480" y="410">CREATIVE</text>
+  <text class="editorial-label" x="480" y="428">DEVELOPER</text>
+  
+  <!-- Vertical line right side -->
+  <line class="line-v" x1="750" y1="200" x2="750" y2="700"/>
+  
+  <!-- Vertical text - right edge -->
+  <text class="vertical-text" x="770" y="300" transform="rotate(180 770 450)">910.STUDIO — 2026</text>
+  
+  <!-- Rotated text element - the weird touch -->
+  <text class="rotated" x="100" y="500" transform="rotate(-90 100 500)">BUILDING THE TOOLS THEN BREAKING THEM BEAUTIFULLY</text>
+  
+  <!-- Stack section - left aligned, editorial -->
+  <text class="stack-label" x="50" y="580">STACK</text>
+  <line class="line-h" x1="50" y1="595" x2="200" y2="595" style="animation-delay: 3.3s"/>
+  
+  <text class="stack-items si-1" x="50" y="625">react, next, typescript, svelte</text>
+  <text class="stack-items si-2" x="50" y="645">prisma, postgres, rails, trpc</text>
+  <text class="stack-items si-3" x="50" y="665">animejs, gsap, framer, three.js, lenis</text>
+  
+  <!-- Duality - bottom right, asymmetric -->
+  <text class="duality-main" x="550" y="600">910build</text>
+  <text class="duality-sub" x="550" y="618">systems that scale</text>
+  
+  <text class="duality-main" x="550" y="660">910studio</text>
+  <text class="duality-sub" x="550" y="678">craft that breathes</text>
+  
+  <!-- Quote - bottom, off center -->
+  <text class="quote" x="300" y="800">"prototype is the product"</text>
+  
+  <!-- Page number - magazine style -->
+  <text class="editorial-tiny" x="750" y="860" text-anchor="end">001</text>
+  
+</svg>
