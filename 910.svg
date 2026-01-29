@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap');
+      
+      /* Background - GitHub dark */
+      .bg { fill: #0D1117; }
+      
+      /* 910 Main Text */
+      .logo {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 140px;
+        font-weight: 700;
+        fill: transparent;
+        stroke: #e4e4e7;
+        stroke-width: 2;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: drawText 2.5s ease-out forwards;
+      }
+      
+      .logo-fill {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 140px;
+        font-weight: 700;
+        fill: #fafafa;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 2s forwards;
+      }
+      
+      .logo-glow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 140px;
+        font-weight: 700;
+        fill: #fafafa;
+        opacity: 0;
+        filter: blur(30px);
+        animation: glowPulse 4s ease-in-out 2.5s infinite;
+      }
+      
+      /* Cursor */
+      .cursor {
+        fill: #fafafa;
+        opacity: 0;
+        animation: cursorBlink 1s step-end 2.5s infinite;
+      }
+      
+      /* Subtitle cycling */
+      .sub {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        letter-spacing: 6px;
+        fill: #a1a1aa;
+        opacity: 0;
+      }
+      
+      .sub-1 { animation: cycle4-1 16s ease-in-out 3s infinite; }
+      .sub-2 { animation: cycle4-2 16s ease-in-out 3s infinite; }
+      .sub-3 { animation: cycle4-3 16s ease-in-out 3s infinite; }
+      .sub-4 { animation: cycle4-4 16s ease-in-out 3s infinite; }
+      
+      /* Horizontal Lines */
+      .h-line {
+        stroke: #3f3f46;
+        stroke-width: 1;
+        stroke-dasharray: 800;
+        stroke-dashoffset: 800;
+        animation: drawLine 1.5s ease-out forwards;
+      }
+      .h-line-1 { animation-delay: 0.3s; }
+      .h-line-2 { animation-delay: 0.5s; }
+      
+      /* Corner Elements */
+      .corner-text {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        fill: #71717a;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 3.5s forwards;
+      }
+      
+      /* Stack Section */
+      .stack-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        fill: #52525b;
+        letter-spacing: 3px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 4s forwards;
+      }
+      
+      .stack-item {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        fill: #71717a;
+        opacity: 0;
+      }
+      
+      /* Staggered stack fade-ins */
+      .s1 { animation: stackIn 0.5s ease-out 4.2s forwards; }
+      .s2 { animation: stackIn 0.5s ease-out 4.3s forwards; }
+      .s3 { animation: stackIn 0.5s ease-out 4.4s forwards; }
+      .s4 { animation: stackIn 0.5s ease-out 4.5s forwards; }
+      .s5 { animation: stackIn 0.5s ease-out 4.6s forwards; }
+      .s6 { animation: stackIn 0.5s ease-out 4.7s forwards; }
+      .s7 { animation: stackIn 0.5s ease-out 4.8s forwards; }
+      .s8 { animation: stackIn 0.5s ease-out 4.9s forwards; }
+      .s9 { animation: stackIn 0.5s ease-out 5.0s forwards; }
+      .s10 { animation: stackIn 0.5s ease-out 5.1s forwards; }
+      .s11 { animation: stackIn 0.5s ease-out 5.2s forwards; }
+      .s12 { animation: stackIn 0.5s ease-out 5.3s forwards; }
+      
+      /* Stack items pulse */
+      .stack-item {
+        animation-fill-mode: forwards;
+      }
+      
+      /* Floating Particles */
+      .particle {
+        fill: #d4d4d8;
+        opacity: 0;
+        animation: float 8s ease-in-out infinite;
+      }
+      .p1 { animation-delay: 0s; }
+      .p2 { animation-delay: 2s; }
+      .p3 { animation-delay: 4s; }
+      .p4 { animation-delay: 6s; }
+      
+      /* Scan Line */
+      .scanline {
+        fill: rgba(250, 250, 250, 0.015);
+        animation: scan 10s linear infinite;
+      }
+      
+      /* Bottom Quote */
+      .quote {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        fill: #52525b;
+        font-style: italic;
+        opacity: 0;
+        animation: fadeIn 1s ease-out 5.5s forwards;
+      }
+      
+      /* Links */
+      .link {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        fill: #71717a;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 6s forwards;
+      }
+      
+      .link-dot {
+        fill: #3f3f46;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 6s forwards;
+      }
+      
+      /* KEYFRAMES */
+      @keyframes drawText {
+        to { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes stackIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes glowPulse {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 0.15; }
+      }
+      
+      @keyframes scan {
+        0% { transform: translateY(-450px); }
+        100% { transform: translateY(450px); }
+      }
+      
+      @keyframes drawLine {
+        to { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes cursorBlink {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes float {
+        0%, 100% { opacity: 0; transform: translateY(0px); }
+        10%, 90% { opacity: 0.6; }
+        50% { transform: translateY(-20px); }
+      }
+      
+      /* 4-way cycle for subtitles */
+      @keyframes cycle4-1 {
+        0%, 20% { opacity: 1; }
+        25%, 100% { opacity: 0; }
+      }
+      @keyframes cycle4-2 {
+        0%, 24% { opacity: 0; }
+        25%, 45% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes cycle4-3 {
+        0%, 49% { opacity: 0; }
+        50%, 70% { opacity: 1; }
+        75%, 100% { opacity: 0; }
+      }
+      @keyframes cycle4-4 {
+        0%, 74% { opacity: 0; }
+        75%, 95% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="bg" width="800" height="450"/>
+  
+  <!-- Scan Line -->
+  <rect class="scanline" x="0" y="0" width="800" height="6"/>
+  
+  <!-- Horizontal Lines -->
+  <line class="h-line h-line-1" x1="0" y1="70" x2="800" y2="70"/>
+  <line class="h-line h-line-2" x1="0" y1="380" x2="800" y2="380"/>
+  
+  <!-- Particles -->
+  <circle class="particle p1" cx="120" cy="140" r="1.5"/>
+  <circle class="particle p2" cx="680" cy="160" r="1"/>
+  <circle class="particle p3" cx="180" cy="340" r="1"/>
+  <circle class="particle p4" cx="620" cy="320" r="1.5"/>
+  
+  <!-- Corner Elements -->
+  <text class="corner-text" x="30" y="45">gray</text>
+  <text class="corner-text" x="30" y="60">ulaanbaatar</text>
+  <text class="corner-text" x="770" y="45" text-anchor="end">910.studio</text>
+  <text class="corner-text" x="770" y="60" text-anchor="end">2026</text>
+  
+  <!-- Main 910 Logo -->
+  <text class="logo-glow" x="400" y="180" text-anchor="middle">910</text>
+  <text class="logo" x="400" y="180" text-anchor="middle">910</text>
+  <text class="logo-fill" x="400" y="180" text-anchor="middle">910</text>
+  
+  <!-- Cursor -->
+  <rect class="cursor" x="545" y="110" width="4" height="55"/>
+  
+  <!-- Cycling Subtitles -->
+  <text class="sub sub-1" x="400" y="215" text-anchor="middle">INFRASTRUCTURE BUILDER</text>
+  <text class="sub sub-2" x="400" y="215" text-anchor="middle">CREATIVE DEVELOPER</text>
+  <text class="sub sub-3" x="400" y="215" text-anchor="middle">SYSTEMS ARCHITECT</text>
+  <text class="sub sub-4" x="400" y="215" text-anchor="middle">MOTION DESIGNER</text>
+  
+  <!-- Stack - scattered but intentional -->
+  <text class="stack-item s1" x="100" y="270">react</text>
+  <text class="stack-item s2" x="160" y="270">next</text>
+  <text class="stack-item s3" x="210" y="270">typescript</text>
+  <text class="stack-item s4" x="310" y="270">svelte</text>
+  <text class="stack-item s5" x="375" y="270">tailwind</text>
+  <text class="stack-item s6" x="455" y="270">prisma</text>
+  <text class="stack-item s7" x="520" y="270">postgres</text>
+  <text class="stack-item s8" x="600" y="270">rails</text>
+  <text class="stack-item s9" x="650" y="270">trpc</text>
+  
+  <text class="stack-item s10" x="150" y="295">animejs</text>
+  <text class="stack-item s11" x="230" y="295">gsap</text>
+  <text class="stack-item s12" x="285" y="295">framer</text>
+  <text class="stack-item s1" x="355" y="295">three.js</text>
+  <text class="stack-item s2" x="430" y="295">lenis</text>
+  <text class="stack-item s3" x="490" y="295">shaders</text>
+  <text class="stack-item s4" x="565" y="295">r3f</text>
+  <text class="stack-item s5" x="610" y="295">reanimated</text>
+  
+  <text class="stack-item s6" x="250" y="320">viem</text>
+  <text class="stack-item s7" x="305" y="320">wagmi</text>
+  <text class="stack-item s8" x="375" y="320">thirdweb</text>
+  <text class="stack-item s9" x="465" y="320">react native</text>
+  
+  <!-- Quote -->
+  <text class="quote" x="400" y="360" text-anchor="middle">"building the tools, then breaking them beautifully"</text>
+  
+  <!-- Links -->
+  <text class="link" x="295" y="420" text-anchor="middle">910.studio</text>
+  <circle class="link-dot" cx="355" cy="417" r="2"/>
+  <text class="link" x="400" y="420" text-anchor="middle">linkedin</text>
+  <circle class="link-dot" cx="445" cy="417" r="2"/>
+  <text class="link" x="490" y="420" text-anchor="middle">x</text>
+  
+</svg>
