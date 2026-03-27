@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
   <defs>
-    <!-- Trail gradients for different directions -->
+    <!-- Trail gradients for shooting stars -->
     <linearGradient id="trail1" x1="100%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1"/>
       <stop offset="100%" style="stop-color:#fafafa;stop-opacity:0"/>
@@ -13,67 +13,25 @@
       <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1"/>
       <stop offset="100%" style="stop-color:#fafafa;stop-opacity:0"/>
     </linearGradient>
-    
+
+    <!-- Dot grid pattern -->
+    <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="0.3" fill="#161b22"/>
+    </pattern>
+
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&amp;display=swap');
-      
+      /* ═══════ BASE ═══════ */
       .bg { fill: #0D1117; }
-      
-      /* Floating particles - subtle, slow */
-      .particle {
-        fill: #fafafa;
-        opacity: 0;
-        animation: floatUp 12s ease-in-out infinite;
-      }
-      
-      .particle-dim {
-        fill: #3f3f46;
-        opacity: 0;
-        animation: floatUp 15s ease-in-out infinite;
-      }
-      
-      .p1 { animation-delay: 0s; }
-      .p2 { animation-delay: 2s; }
-      .p3 { animation-delay: 4s; }
-      .p4 { animation-delay: 6s; }
-      .p5 { animation-delay: 8s; }
-      .p6 { animation-delay: 10s; }
-      .p7 { animation-delay: 1s; }
-      .p8 { animation-delay: 3s; }
-      .p9 { animation-delay: 5s; }
-      .p10 { animation-delay: 7s; }
-      
-      /* Ambient glow orbs - very subtle */
-      .orb {
-        fill: #fafafa;
-        filter: blur(40px);
-        opacity: 0;
-        animation: orbPulse 8s ease-in-out infinite;
-      }
-      
-      .orb-1 { animation-delay: 0s; }
-      .orb-2 { animation-delay: 4s; }
-      
-      /* Scan line - very subtle, slow */
-      .scanline {
-        fill: rgba(250, 250, 250, 0.008);
-        animation: scanDown 10s linear infinite;
-      }
-      
-      /* Static stars */
-      .star {
-        fill: #3f3f46;
-        opacity: 0;
-        animation: fadeInSlow 2s ease-out 0.5s forwards;
-      }
-      
-      /* Twinkling stars */
-      .star-twinkle {
-        fill: #fafafa;
-        opacity: 0;
-        animation: twinkle 4s ease-in-out infinite;
-      }
-      
+      .dot-grid { fill: url(#dotGrid); opacity: 0; animation: fadeIn 3s ease-out 0.2s forwards; }
+
+      /* ═══════ CROP MARKS ═══════ */
+      .crop { stroke: #21262d; stroke-width: 0.5; opacity: 0; animation: fadeIn 1.2s ease-out 0.3s forwards; }
+      .reg  { stroke: #21262d; stroke-width: 0.5; fill: none; opacity: 0; animation: fadeIn 1.2s ease-out 0.3s forwards; }
+
+      /* ═══════ STARS ═══════ */
+      .star { fill: #3f3f46; opacity: 0; animation: fadeIn 2s ease-out 0.5s forwards; }
+
+      .star-twinkle { fill: #fafafa; opacity: 0; animation: twinkle 4s ease-in-out infinite; }
       .tw1 { animation-delay: 0s; }
       .tw2 { animation-delay: 0.5s; }
       .tw3 { animation-delay: 1s; }
@@ -82,332 +40,315 @@
       .tw6 { animation-delay: 2.5s; }
       .tw7 { animation-delay: 3s; }
       .tw8 { animation-delay: 3.5s; }
-      
-      /* Shooting stars - dot with trail */
-      .shooting-star {
-        opacity: 0;
-      }
-      
-      .ss1 {
-        animation: shoot1 10s ease-out infinite;
-        animation-delay: 2s;
-      }
-      
-      .ss2 {
-        animation: shoot2 12s ease-out infinite;
-        animation-delay: 6s;
-      }
-      
-      .ss3 {
-        animation: shoot3 11s ease-out infinite;
-        animation-delay: 9s;
-      }
-      
-      /* Giant 910 - off center, cropped feeling */
+
+      /* ═══════ SHOOTING STARS ═══════ */
+      .shooting-star { opacity: 0; }
+      .ss1 { animation: shoot1 10s ease-out infinite; animation-delay: 3s; }
+      .ss2 { animation: shoot2 14s ease-out infinite; animation-delay: 7s; }
+      .ss3 { animation: shoot3 12s ease-out infinite; animation-delay: 11s; }
+
+      /* ═══════ PARTICLES — gentle upward drift ═══════ */
+      .particle     { fill: #fafafa; opacity: 0; animation: floatUp 14s ease-in-out infinite; }
+      .particle-dim { fill: #3f3f46; opacity: 0; animation: floatUp 18s ease-in-out infinite; }
+      .p1  { animation-delay: 0s; }
+      .p2  { animation-delay: 2.5s; }
+      .p3  { animation-delay: 5s; }
+      .p4  { animation-delay: 7.5s; }
+      .p5  { animation-delay: 10s; }
+      .p6  { animation-delay: 1.5s; }
+      .p7  { animation-delay: 4s; }
+      .p8  { animation-delay: 6.5s; }
+      .p9  { animation-delay: 9s; }
+      .p10 { animation-delay: 11.5s; }
+
+      /* ═══════ AMBIENT GLOW ORBS ═══════ */
+      .orb { fill: #fafafa; filter: blur(50px); opacity: 0; animation: orbPulse 10s ease-in-out infinite; }
+      .orb-1 { animation-delay: 0s; }
+      .orb-2 { animation-delay: 5s; }
+
+      /* ═══════ SCAN LINE ═══════ */
+      .scanline { fill: rgba(250,250,250,0.006); animation: scanDown 12s linear infinite; }
+
+      /* ═══════ GIANT BACKGROUND 9 ═══════ */
       .giant-9 {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 400px;
-        font-weight: 700;
-        fill: transparent;
-        stroke: #1a1a1a;
-        stroke-width: 1;
-        opacity: 0;
-        animation: fadeInSlow 2s ease-out 0.5s forwards;
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 400px; font-weight: 700;
+        fill: transparent; stroke: #161b22; stroke-width: 1;
+        opacity: 0; animation: fadeIn 2.5s ease-out 0.5s forwards;
       }
-      
-      /* Main 910 */
-      .logo-main {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 180px;
-        font-weight: 700;
-        fill: #fafafa;
-        opacity: 0;
-        animation: revealLogo 1.5s ease-out 1s forwards;
-      }
-      
-      .logo-glow {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 180px;
-        font-weight: 700;
-        fill: #fafafa;
-        filter: blur(60px);
-        opacity: 0;
-        animation: glowBreath 5s ease-in-out 2s infinite;
-      }
-      
-      /* Glitch layers */
-      .glitch-1 {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 180px;
-        font-weight: 700;
-        fill: #00ffff;
-        opacity: 0;
-        animation: glitchA 12s ease-in-out 3s infinite;
-      }
-      
-      .glitch-2 {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 180px;
-        font-weight: 700;
-        fill: #ff0040;
-        opacity: 0;
-        animation: glitchB 12s ease-in-out 3s infinite;
-      }
-      
-      /* Editorial text - different weights, sizes */
-      .editorial-large {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px;
-        font-weight: 300;
-        letter-spacing: 12px;
-        fill: #525252;
-        opacity: 0;
-        animation: fadeInSlow 1.5s ease-out 2s forwards;
-      }
-      
-      .editorial-tiny {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9px;
-        font-weight: 400;
-        fill: #3f3f46;
-        opacity: 0;
-        animation: fadeInSlow 1.5s ease-out 2.5s forwards;
-      }
-      
-      .editorial-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 500;
-        letter-spacing: 4px;
-        fill: #71717a;
-        opacity: 0;
-        animation: fadeInSlow 1.2s ease-out 2.8s forwards;
-      }
-      
-      /* Vertical text */
-      .vertical-text {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 400;
-        letter-spacing: 3px;
-        fill: #3f3f46;
-        writing-mode: vertical-rl;
-        opacity: 0;
-        animation: fadeInSlow 1.5s ease-out 3s forwards;
-      }
-      
-      /* The weird element - rotated text */
-      .rotated {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 8px;
-        fill: #27272a;
-        letter-spacing: 2px;
-        opacity: 0;
-        animation: fadeInSlow 2s ease-out 3.5s forwards;
-      }
-      
-      /* Stack - editorial style */
-      .stack-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 8px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        fill: #52525b;
-        opacity: 0;
-        animation: fadeInSlow 1s ease-out 3.2s forwards;
-      }
-      
-      .stack-items {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 11px;
-        font-weight: 400;
-        fill: #3f3f46;
-        opacity: 0;
-        animation: fadeInSlow 1s ease-out forwards;
-      }
-      
-      .si-1 { animation-delay: 3.4s; }
-      .si-2 { animation-delay: 3.6s; }
-      .si-3 { animation-delay: 3.8s; }
-      
-      /* Duality - asymmetric */
-      .duality-main {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
-        font-weight: 500;
-        fill: #a1a1aa;
-        opacity: 0;
-        animation: fadeInSlow 1s ease-out 4s forwards;
-      }
-      
-      .duality-sub {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 300;
-        fill: #525252;
-        opacity: 0;
-        animation: fadeInSlow 1s ease-out 4.2s forwards;
-      }
-      
-      /* Line elements */
-      .line-h {
-        stroke: #1f1f1f;
-        stroke-width: 1;
-        opacity: 0;
-        animation: fadeInSlow 1.5s ease-out 2s forwards;
-      }
-      
-      .line-v {
-        stroke: #1f1f1f;
-        stroke-width: 1;
-        opacity: 0;
-        animation: drawLineV 1.5s ease-out 2.5s forwards;
-      }
-      
-      /* Quote - bottom */
-      .quote {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 300;
-        fill: #3f3f46;
-        font-style: italic;
-        opacity: 0;
-        animation: fadeInSlow 1.5s ease-out 4.5s forwards;
-      }
-      
-      /* Issue number - magazine style */
+      .giant-9-breath { animation: subtleBreath 8s ease-in-out 3s infinite; }
+
+      /* ═══════ ISSUE NUMBER ═══════ */
       .issue {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 72px;
-        font-weight: 700;
-        fill: none;
-        stroke: #1a1a1a;
-        stroke-width: 1;
-        opacity: 0;
-        animation: fadeInSlow 2s ease-out 1s forwards;
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 72px; font-weight: 700;
+        fill: none; stroke: #161b22; stroke-width: 1;
+        opacity: 0; animation: fadeIn 2s ease-out 1s forwards;
       }
-      
-      /* KEYFRAMES */
-      @keyframes fadeInSlow {
+
+      /* ═══════ MAIN 910 LOGO ═══════ */
+      .logo-main {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 180px; font-weight: 700; fill: #fafafa;
+        opacity: 0; animation: revealLogo 1.5s ease-out 1s forwards;
+      }
+      .logo-glow {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 180px; font-weight: 700; fill: #fafafa;
+        filter: blur(60px); opacity: 0;
+        animation: glowBreath 6s ease-in-out 2s infinite;
+      }
+      .glitch-1 {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 180px; font-weight: 700; fill: #00ffff;
+        opacity: 0; animation: glitchA 14s ease-in-out 4s infinite;
+      }
+      .glitch-2 {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 180px; font-weight: 700; fill: #ff0040;
+        opacity: 0; animation: glitchB 14s ease-in-out 4s infinite;
+      }
+
+      /* ═══════ EDITORIAL TEXT ═══════ */
+      .ed-large {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 300; letter-spacing: 12px;
+        fill: #525252; opacity: 0; animation: fadeIn 1.5s ease-out 2s forwards;
+      }
+      .ed-tiny {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 9px; font-weight: 400; fill: #3f3f46;
+        opacity: 0; animation: fadeIn 1.5s ease-out 2.5s forwards;
+      }
+      .ed-label {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 500; letter-spacing: 4px;
+        fill: #71717a; opacity: 0; animation: fadeIn 1.2s ease-out 2.8s forwards;
+      }
+      .ed-coords {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 8px; font-weight: 400; letter-spacing: 1px;
+        fill: #21262d; opacity: 0; animation: fadeIn 2s ease-out 2.2s forwards;
+      }
+
+      /* ═══════ STATUS DOT ═══════ */
+      .status-dot { fill: #22c55e; opacity: 0; animation: statusPulse 3s ease-in-out 3s infinite; }
+      .status-text {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 8px; font-weight: 500; letter-spacing: 3px;
+        fill: #3f3f46; opacity: 0; animation: fadeIn 1s ease-out 3s forwards;
+      }
+
+      /* ═══════ VERTICAL TEXT ═══════ */
+      .vert-text {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 400; letter-spacing: 3px;
+        fill: #3f3f46; writing-mode: vertical-rl;
+        opacity: 0; animation: fadeIn 1.5s ease-out 3s forwards;
+      }
+
+      /* ═══════ ROTATED TEXT ═══════ */
+      .rotated-text {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 8px; fill: #21262d; letter-spacing: 2px;
+        opacity: 0; animation: fadeIn 2s ease-out 3.5s forwards;
+      }
+
+      /* ═══════ STACK ═══════ */
+      .stack-label {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 8px; font-weight: 500; letter-spacing: 3px;
+        fill: #52525b; opacity: 0; animation: fadeIn 1s ease-out 3.2s forwards;
+      }
+      .stack-item {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 400; fill: #3f3f46;
+        opacity: 0; animation: fadeIn 1s ease-out forwards;
+      }
+      .si1 { animation-delay: 3.4s; }
+      .si2 { animation-delay: 3.6s; }
+      .si3 { animation-delay: 3.8s; }
+
+      /* ═══════ NOW SECTION ═══════ */
+      .now-label {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 8px; font-weight: 500; letter-spacing: 3px;
+        fill: #52525b; opacity: 0; animation: fadeIn 1s ease-out 3.5s forwards;
+      }
+      .now-title {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 14px; font-weight: 500; fill: #a1a1aa;
+        opacity: 0; animation: fadeIn 1s ease-out 3.7s forwards;
+      }
+      .now-desc {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 9px; font-weight: 300; fill: #3f3f46;
+        opacity: 0; animation: fadeIn 1s ease-out 3.9s forwards;
+      }
+
+      /* ═══════ DUALITY ═══════ */
+      .dual-main {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 14px; font-weight: 500; fill: #a1a1aa;
+        opacity: 0; animation: fadeIn 1s ease-out 4s forwards;
+      }
+      .dual-sub {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 300; fill: #525252;
+        opacity: 0; animation: fadeIn 1s ease-out 4.2s forwards;
+      }
+
+      /* ═══════ LINES ═══════ */
+      .line-h {
+        stroke: #161b22; stroke-width: 1; opacity: 0;
+        animation: fadeIn 1.5s ease-out 2s forwards;
+      }
+      .line-v {
+        stroke: #161b22; stroke-width: 1; opacity: 0;
+        animation: drawLineV 2s ease-out 2.5s forwards;
+      }
+      .line-pulse { animation: linePulse 6s ease-in-out infinite; }
+      .lp1 { animation-delay: 0s; }
+      .lp2 { animation-delay: 3s; }
+
+      /* ═══════ QUOTE ═══════ */
+      .quote {
+        font-family: 'SF Mono','JetBrains Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 300; fill: #3f3f46; font-style: italic;
+        opacity: 0; animation: fadeIn 1.5s ease-out 4.5s forwards;
+      }
+
+      /* ═══════ GENTLE FLOAT GROUPS ═══════ */
+      .float-1 { animation: gentleFloat 8s ease-in-out infinite; }
+      .float-2 { animation: gentleFloat 7s ease-in-out 1s infinite; }
+      .float-3 { animation: gentleFloat 9s ease-in-out 2s infinite; }
+      .float-4 { animation: gentleFloat 6s ease-in-out 0.5s infinite; }
+      .float-5 { animation: gentleFloat 10s ease-in-out 3s infinite; }
+
+      /* ═══════ KEYFRAMES ═══════ */
+      @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
       }
-      
+
       @keyframes revealLogo {
         0% { opacity: 0; transform: translateY(20px); }
         100% { opacity: 1; transform: translateY(0); }
       }
-      
+
       @keyframes glowBreath {
-        0%, 100% { opacity: 0.05; }
-        50% { opacity: 0.15; }
+        0%, 100% { opacity: 0.04; }
+        50% { opacity: 0.12; }
       }
-      
+
       @keyframes glitchA {
-        0%, 88%, 92%, 96%, 100% { opacity: 0; transform: translateX(0); }
-        89% { opacity: 0.6; transform: translateX(-5px); }
-        91% { opacity: 0.3; transform: translateX(3px); }
-        95% { opacity: 0.4; transform: translateX(-2px); }
+        0%, 90%, 93%, 96%, 100% { opacity: 0; transform: translateX(0); }
+        91% { opacity: 0.5; transform: translateX(-4px); }
+        92% { opacity: 0.2; transform: translateX(3px); }
+        95% { opacity: 0.3; transform: translateX(-2px); }
       }
-      
+
       @keyframes glitchB {
-        0%, 88%, 92%, 96%, 100% { opacity: 0; transform: translateX(0); }
-        90% { opacity: 0.5; transform: translateX(5px); }
-        93% { opacity: 0.4; transform: translateX(-3px); }
-        95% { opacity: 0.2; transform: translateX(2px); }
+        0%, 90%, 93%, 96%, 100% { opacity: 0; transform: translateX(0); }
+        91.5% { opacity: 0.4; transform: translateX(4px); }
+        93.5% { opacity: 0.3; transform: translateX(-3px); }
+        95% { opacity: 0.15; transform: translateX(2px); }
       }
-      
+
       @keyframes drawLineV {
-        from { opacity: 0; stroke-dasharray: 200; stroke-dashoffset: 200; }
+        from { opacity: 0; stroke-dasharray: 500; stroke-dashoffset: 500; }
         to { opacity: 1; stroke-dashoffset: 0; }
       }
-      
+
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.15; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.3); }
+      }
+
       @keyframes floatUp {
         0% { opacity: 0; transform: translateY(0); }
-        10% { opacity: 0.4; }
-        50% { opacity: 0.6; }
-        90% { opacity: 0.4; }
-        100% { opacity: 0; transform: translateY(-150px); }
+        10% { opacity: 0.25; }
+        50% { opacity: 0.35; }
+        90% { opacity: 0.25; }
+        100% { opacity: 0; transform: translateY(-100px); }
       }
-      
+
       @keyframes orbPulse {
         0%, 100% { opacity: 0; transform: scale(0.8); }
-        50% { opacity: 0.03; transform: scale(1.2); }
+        50% { opacity: 0.025; transform: scale(1.2); }
       }
-      
+
       @keyframes scanDown {
         0% { transform: translateY(-100px); }
         100% { transform: translateY(1000px); }
       }
-      
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.2; transform: scale(1); }
-        50% { opacity: 0.8; transform: scale(1.3); }
+
+      @keyframes subtleBreath {
+        0%, 100% { opacity: 0.85; }
+        50% { opacity: 1; }
       }
-      
+
+      @keyframes statusPulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes linePulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+
       @keyframes shoot1 {
-        0%, 85%, 100% { 
-          opacity: 0;
-          transform: translate(150px, 80px);
-        }
-        86% {
-          opacity: 1;
-          transform: translate(150px, 80px);
-        }
-        92% { 
-          opacity: 0.6;
-          transform: translate(250px, 180px);
-        }
-        94% {
-          opacity: 0;
-          transform: translate(280px, 210px);
-        }
+        0%, 85%, 100% { opacity: 0; transform: translate(150px, 80px); }
+        86% { opacity: 1; transform: translate(150px, 80px); }
+        92% { opacity: 0.5; transform: translate(260px, 190px); }
+        94% { opacity: 0; transform: translate(290px, 220px); }
       }
-      
+
       @keyframes shoot2 {
-        0%, 85%, 100% { 
-          opacity: 0;
-          transform: translate(0, 0);
-        }
-        86% {
-          opacity: 1;
-          transform: translate(0, 0);
-        }
-        92% { 
-          opacity: 0.6;
-          transform: translate(-100px, 80px);
-        }
-        94% {
-          opacity: 0;
-          transform: translate(-130px, 100px);
-        }
+        0%, 87%, 100% { opacity: 0; transform: translate(0, 0); }
+        88% { opacity: 1; transform: translate(0, 0); }
+        93% { opacity: 0.5; transform: translate(-110px, 85px); }
+        95% { opacity: 0; transform: translate(-140px, 110px); }
       }
-      
+
       @keyframes shoot3 {
-        0%, 85%, 100% { 
-          opacity: 0;
-          transform: translate(0, 0);
-        }
-        86% {
-          opacity: 1;
-          transform: translate(0, 0);
-        }
-        92% { 
-          opacity: 0.6;
-          transform: translate(60px, 120px);
-        }
-        94% {
-          opacity: 0;
-          transform: translate(80px, 150px);
-        }
+        0%, 86%, 100% { opacity: 0; transform: translate(0, 0); }
+        87% { opacity: 1; transform: translate(0, 0); }
+        92% { opacity: 0.5; transform: translate(65px, 125px); }
+        94% { opacity: 0; transform: translate(85px, 155px); }
       }
     </style>
   </defs>
-  
-  <!-- Background -->
+
+  <!-- ═══════ FOUNDATION ═══════ -->
   <rect class="bg" width="800" height="900"/>
-  
-  <!-- STARRY NIGHT - tiny static stars -->
+  <rect class="dot-grid" width="800" height="900"/>
+  <rect class="scanline" x="0" y="0" width="800" height="3"/>
+
+  <!-- ═══════ CROP MARKS ═══════ -->
+  <line class="crop" x1="15" y1="25" x2="32" y2="25"/>
+  <line class="crop" x1="25" y1="15" x2="25" y2="32"/>
+  <line class="crop" x1="768" y1="25" x2="785" y2="25"/>
+  <line class="crop" x1="775" y1="15" x2="775" y2="32"/>
+  <line class="crop" x1="15" y1="875" x2="32" y2="875"/>
+  <line class="crop" x1="25" y1="868" x2="25" y2="885"/>
+  <line class="crop" x1="768" y1="875" x2="785" y2="875"/>
+  <line class="crop" x1="775" y1="868" x2="775" y2="885"/>
+  <!-- Registration marks -->
+  <circle class="reg" cx="400" cy="18" r="4"/>
+  <line class="crop" x1="393" y1="18" x2="407" y2="18"/>
+  <line class="crop" x1="400" y1="11" x2="400" y2="25"/>
+  <circle class="reg" cx="400" cy="882" r="4"/>
+  <line class="crop" x1="393" y1="882" x2="407" y2="882"/>
+  <line class="crop" x1="400" y1="875" x2="400" y2="889"/>
+
+  <!-- ═══════ STARFIELD ═══════ -->
   <circle class="star" cx="45" cy="120" r="0.5"/>
   <circle class="star" cx="123" cy="67" r="0.8"/>
   <circle class="star" cx="234" cy="145" r="0.5"/>
@@ -449,8 +390,8 @@
   <circle class="star" cx="534" cy="812" r="0.5"/>
   <circle class="star" cx="645" cy="856" r="0.6"/>
   <circle class="star" cx="756" cy="789" r="0.5"/>
-  
-  <!-- Twinkling stars - slightly brighter, animate -->
+
+  <!-- Twinkling stars -->
   <circle class="star-twinkle tw1" cx="189" cy="178" r="1"/>
   <circle class="star-twinkle tw2" cx="445" cy="67" r="1"/>
   <circle class="star-twinkle tw3" cx="623" cy="189" r="1"/>
@@ -459,81 +400,121 @@
   <circle class="star-twinkle tw6" cx="345" cy="734" r="1"/>
   <circle class="star-twinkle tw7" cx="534" cy="589" r="1"/>
   <circle class="star-twinkle tw8" cx="178" cy="567" r="1"/>
-  
-  <!-- SHOOTING STARS - dots with trails, different directions -->
-  <!-- Shooting star 1: top-left to bottom-right -->
+
+  <!-- ═══════ SHOOTING STARS ═══════ -->
   <g class="shooting-star ss1">
     <circle cx="0" cy="0" r="1.5" fill="#fafafa"/>
     <line x1="0" y1="0" x2="-20" y2="-20" stroke="url(#trail1)" stroke-width="1.5" stroke-linecap="round"/>
   </g>
-  
-  <!-- Shooting star 2: top-right to bottom-left -->
   <g class="shooting-star ss2" style="transform-origin: 700px 100px;">
     <circle cx="700" cy="100" r="1.5" fill="#fafafa"/>
     <line x1="700" y1="100" x2="720" y2="80" stroke="url(#trail2)" stroke-width="1.5" stroke-linecap="round"/>
   </g>
-  
-  <!-- Shooting star 3: steep angle -->
   <g class="shooting-star ss3" style="transform-origin: 400px 60px;">
     <circle cx="400" cy="60" r="1.5" fill="#fafafa"/>
     <line x1="400" y1="60" x2="390" y2="35" stroke="url(#trail3)" stroke-width="1.5" stroke-linecap="round"/>
   </g>
-  
-  <!-- Giant background 9 - cropped, barely visible -->
-  <text class="giant-9" x="-80" y="450">9</text>
-  
-  <!-- Issue number - magazine style, top right -->
-  <text class="issue" x="680" y="120" text-anchor="end">01</text>
-  
-  <!-- Top left - editorial info -->
-  <text class="editorial-large" x="50" y="60">GRAY</text>
-  <text class="editorial-tiny" x="50" y="80">UB, MONGOLIA</text>
-  <text class="editorial-tiny" x="50" y="95">23 Y/O</text>
-  
-  <!-- Horizontal line -->
-  <line class="line-h" x1="50" y1="120" x2="350" y2="120"/>
-  
-  <!-- Main 910 - slightly off center left -->
-  <text class="logo-glow" x="280" y="380" text-anchor="middle">910</text>
-  <text class="glitch-1" x="280" y="380" text-anchor="middle">910</text>
-  <text class="glitch-2" x="280" y="380" text-anchor="middle">910</text>
-  <text class="logo-main" x="280" y="380" text-anchor="middle">910</text>
-  
-  <!-- Subtitle - offset right -->
-  <text class="editorial-label" x="480" y="340">INFRASTRUCTURE</text>
-  <text class="editorial-label" x="480" y="358">BUILDER</text>
-  <text class="editorial-tiny" x="480" y="385">×</text>
-  <text class="editorial-label" x="480" y="410">CREATIVE</text>
-  <text class="editorial-label" x="480" y="428">DEVELOPER</text>
-  
-  <!-- Vertical line right side -->
-  <line class="line-v" x1="750" y1="200" x2="750" y2="700"/>
-  
-  <!-- Vertical text - right edge -->
-  <text class="vertical-text" x="770" y="300" transform="rotate(180 770 450)">910.STUDIO — 2026</text>
-  
-  <!-- Rotated text element - the weird touch -->
-  <text class="rotated" x="100" y="500" transform="rotate(-90 100 500)">BUILDING THE TOOLS THEN BREAKING THEM BEAUTIFULLY</text>
-  
-  <!-- Stack section - left aligned, editorial -->
-  <text class="stack-label" x="50" y="580">STACK</text>
-  <line class="line-h" x1="50" y1="595" x2="200" y2="595" style="animation-delay: 3.3s"/>
-  
-  <text class="stack-items si-1" x="50" y="625">react, next, typescript, svelte</text>
-  <text class="stack-items si-2" x="50" y="645">prisma, postgres, rails, trpc</text>
-  <text class="stack-items si-3" x="50" y="665">animejs, gsap, framer, three.js, lenis</text>
-  
-  <!-- Duality - bottom right, asymmetric -->
-  <text class="duality-main" x="550" y="600">910build</text>
-  <text class="duality-sub" x="550" y="618">systems that scale</text>
-  
-  <text class="duality-main" x="550" y="660">910studio</text>
-  <text class="duality-sub" x="550" y="678">craft that breathes</text>
-  
-  <!-- Quote - bottom, off center -->
+
+  <!-- ═══════ ATMOSPHERIC LAYER ═══════ -->
+  <!-- Ambient glow orbs — soft, barely visible -->
+  <circle class="orb orb-1" cx="250" cy="360" r="90"/>
+  <circle class="orb orb-2" cx="600" cy="550" r="70"/>
+
+  <!-- Floating particles — tiny, drifting upward -->
+  <circle class="particle p1" cx="95" cy="650" r="0.8"/>
+  <circle class="particle-dim p2" cx="220" cy="720" r="1"/>
+  <circle class="particle p3" cx="350" cy="680" r="0.6"/>
+  <circle class="particle-dim p4" cx="480" cy="750" r="0.8"/>
+  <circle class="particle p5" cx="610" cy="700" r="0.7"/>
+  <circle class="particle-dim p6" cx="150" cy="780" r="1"/>
+  <circle class="particle p7" cx="540" cy="640" r="0.6"/>
+  <circle class="particle-dim p8" cx="680" cy="760" r="0.8"/>
+  <circle class="particle p9" cx="300" cy="810" r="0.7"/>
+  <circle class="particle-dim p10" cx="420" cy="690" r="0.9"/>
+
+  <!-- ═══════ BACKGROUND ELEMENTS ═══════ -->
+  <!-- Giant 9 — cropped, barely visible, breathes -->
+  <g class="giant-9-breath">
+    <text class="giant-9" x="-80" y="450">9</text>
+  </g>
+
+  <!-- Issue number — floats independently -->
+  <g class="float-4">
+    <text class="issue" x="680" y="120" text-anchor="end">01</text>
+  </g>
+
+  <!-- ═══════ TOP SECTION ═══════ -->
+  <g class="float-3">
+    <text class="ed-large" x="50" y="60">GRAY</text>
+    <text class="ed-tiny" x="50" y="80">UB, MONGOLIA</text>
+    <text class="ed-coords" x="50" y="96">47.9184°N  106.9177°E</text>
+  </g>
+
+  <!-- Status indicator -->
+  <circle class="status-dot" cx="690" cy="56" r="3"/>
+  <text class="status-text" x="700" y="59">ACTIVE</text>
+
+  <!-- Horizontal rule — pulses -->
+  <line class="line-h line-pulse lp1" x1="50" y1="120" x2="350" y2="120"/>
+
+  <!-- ═══════ MAIN 910 LOGO — floats as a group ═══════ -->
+  <g class="float-1">
+    <text class="logo-glow" x="280" y="380" text-anchor="middle">910</text>
+    <text class="glitch-1" x="280" y="380" text-anchor="middle">910</text>
+    <text class="glitch-2" x="280" y="380" text-anchor="middle">910</text>
+    <text class="logo-main" x="280" y="380" text-anchor="middle">910</text>
+  </g>
+
+  <!-- Subtitle — floats at different rate -->
+  <g class="float-2">
+    <text class="ed-label" x="480" y="340">INFRASTRUCTURE</text>
+    <text class="ed-label" x="480" y="358">BUILDER</text>
+    <text class="ed-tiny" x="480" y="385" style="animation-delay:2.8s">×</text>
+    <text class="ed-label" x="480" y="410">CREATIVE</text>
+    <text class="ed-label" x="480" y="428">DEVELOPER</text>
+  </g>
+
+  <!-- ═══════ EDGE ELEMENTS ═══════ -->
+  <!-- Vertical line — draws then pulses -->
+  <line class="line-v line-pulse lp2" x1="750" y1="200" x2="750" y2="700"/>
+
+  <!-- Vertical text -->
+  <text class="vert-text" x="770" y="300" transform="rotate(180 770 450)">910.STUDIO — 2026</text>
+
+  <!-- Rotated text — left edge -->
+  <text class="rotated-text" x="100" y="500" transform="rotate(-90 100 500)">BUILDING THE TOOLS THEN BREAKING THEM BEAUTIFULLY</text>
+
+  <!-- ═══════ NOW SECTION ═══════ -->
+  <g class="float-5">
+    <text class="now-label" x="50" y="510">NOW</text>
+    <line class="line-h" x1="50" y1="522" x2="120" y2="522" style="animation-delay:3.5s"/>
+    <text class="now-title" x="50" y="545">XOS v1.0</text>
+    <text class="now-desc" x="50" y="562">experience composition engine</text>
+    <text class="now-desc" x="50" y="578" style="animation-delay:4.1s">multi-tenant · 77 components · 6 domains</text>
+  </g>
+
+  <!-- ═══════ STACK ═══════ -->
+  <text class="stack-label" x="50" y="620">STACK</text>
+  <line class="line-h" x1="50" y1="633" x2="200" y2="633" style="animation-delay:3.3s"/>
+  <text class="stack-item si1" x="50" y="660">react · next.js · typescript</text>
+  <text class="stack-item si2" x="50" y="680">prisma · postgres · nestjs · trpc</text>
+  <text class="stack-item si3" x="50" y="700">three.js · gsap · animejs · lenis</text>
+
+  <!-- ═══════ DUALITY ═══════ -->
+  <g class="float-3" style="animation-delay:1.5s">
+    <text class="dual-main" x="520" y="620">910build</text>
+    <text class="dual-sub" x="520" y="638">systems that scale</text>
+    <text class="dual-main" x="520" y="680" style="animation-delay:4.3s">910studio</text>
+    <text class="dual-sub" x="520" y="698" style="animation-delay:4.5s">craft that breathes</text>
+  </g>
+
+  <!-- ═══════ BOTTOM ═══════ -->
   <text class="quote" x="300" y="800">"prototype is the product"</text>
-  
-  <!-- Page number - magazine style -->
-  <text class="editorial-tiny" x="750" y="860" text-anchor="end">001</text>
-  
+
+  <!-- Bottom bleed line — pulses -->
+  <line class="line-h line-pulse lp1" x1="50" y1="840" x2="750" y2="840" style="animation-delay:4s"/>
+
+  <text class="ed-tiny" x="750" y="860" text-anchor="end" style="animation-delay:4.2s">001</text>
+  <text class="ed-coords" x="50" y="860">MMXXVI</text>
+
 </svg>
