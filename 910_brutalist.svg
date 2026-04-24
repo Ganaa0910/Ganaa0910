@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500">
+  <defs>
+    <style>
+      /* ═══════ BASE ═══════ */
+      .bg { fill: #0D1117; }
+      .accent-bar { fill: #f59e0b; opacity: 0; animation: fadeIn 0.6s ease-out 0.8s forwards; }
+      .bleed-line { stroke: #21262d; stroke-width: 1; opacity: 0; animation: fadeIn 1s ease-out 0.3s forwards; }
+
+      /* ═══════ BACKGROUND NOISE MARKS ═══════ */
+      /* All marks use pathLength="100" so dasharray/offset works uniformly. */
+      /* Animation: draws in from start → fully drawn → tail chases → gone. Loops. */
+      .mark {
+        stroke: #F0EDE8;
+        stroke-width: 14;
+        fill: none;
+        stroke-linecap: square;
+        stroke-linejoin: miter;
+        stroke-dasharray: 100 100;
+        stroke-dashoffset: 100;
+        opacity: 0.28;
+      }
+      .mark-amber { stroke: #f59e0b; opacity: 0.55; }
+      .mark-electric { stroke: #3366FF; opacity: 0.55; }
+
+      /* Individual loops — different durations + delays so they never sync */
+      .m1  { animation: drawChase 9s  linear 0s    infinite; }
+      .m2  { animation: drawChase 11s linear 1.6s  infinite; }
+      .m3  { animation: drawChase 13s linear 3.2s  infinite; }
+      .m4  { animation: drawChase 8s  linear 4.5s  infinite; }
+      .m5  { animation: drawChase 15s linear 2.1s  infinite; }
+      .m6  { animation: drawChase 7s  linear 6s    infinite; }
+      .m7  { animation: drawChase 12s linear 0.8s  infinite; }
+      .m8  { animation: drawChase 10s linear 5.3s  infinite; }
+      .m9  { animation: drawChase 14s linear 7.2s  infinite; }
+      .m10 { animation: drawChase 17s linear 3.7s  infinite; }
+      .m11 { animation: drawChase 6s  linear 8.5s  infinite; }
+      .m12 { animation: drawChase 16s linear 4.2s  infinite; }
+
+      /* ═══════ GIANT 910 ═══════ */
+      .logo-main {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 320px; font-weight: 900;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.9s ease-out 0.3s forwards;
+      }
+      .logo-glitch-cyan {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 320px; font-weight: 900;
+        fill: #3366FF;
+        opacity: 0;
+        animation: glitchA 9s ease-in-out 4s infinite;
+      }
+      .logo-glitch-red {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 320px; font-weight: 900;
+        fill: #EF4444;
+        opacity: 0;
+        animation: glitchB 9s ease-in-out 4s infinite;
+      }
+
+      /* ═══════ BLINKING CURSOR ═══════ */
+      .cursor {
+        fill: #3366FF;
+        opacity: 0;
+        animation: cursorBlink 1s steps(2) 2s infinite;
+      }
+
+      /* ═══════ UNDERLINE SWEEP ═══════ */
+      .underline-sweep {
+        stroke: #f59e0b; stroke-width: 10; fill: none; stroke-linecap: square;
+        stroke-dasharray: 620; stroke-dashoffset: 620;
+        animation: sweep 1.2s cubic-bezier(0.77, 0, 0.175, 1) 1.4s forwards;
+      }
+
+      /* ═══════ TOP META ═══════ */
+      .top-name {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 15px; font-weight: 800; letter-spacing: 6px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out 0.5s forwards;
+      }
+      .top-coords {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 500; letter-spacing: 2px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.7s ease-out 0.7s forwards;
+      }
+
+      /* ═══════ STATUS ═══════ */
+      .status-dot {
+        fill: #3366FF;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1s forwards, statusPulse 1.8s ease-in-out 1s infinite;
+      }
+      .status-text {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 12px; font-weight: 800; letter-spacing: 4px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out 1s forwards;
+      }
+      .status-sub {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 500; letter-spacing: 2px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.7s ease-out 1.2s forwards;
+      }
+
+      /* ═══════ RIGHT LABELS ═══════ */
+      .label-big {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 40px; font-weight: 800; letter-spacing: 1px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      .lb1 { animation-delay: 1.4s; }
+      .lb2 { animation-delay: 1.55s; }
+      .lb3 { animation-delay: 1.85s; }
+      .lb4 { animation-delay: 2s; }
+      .label-cross {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 40px; font-weight: 800;
+        fill: #f59e0b;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 1.7s forwards;
+      }
+
+      /* ═══════ BOTTOM ═══════ */
+      .divider { stroke: #21262d; stroke-width: 2; opacity: 0; animation: fadeIn 1s ease-out 2.1s forwards; }
+      .now-label {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 800; letter-spacing: 5px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.6s ease-out 2.3s forwards;
+      }
+      .now-text {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 14px; font-weight: 600;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out 2.4s forwards;
+      }
+      .quote {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 13px; font-weight: 500; font-style: italic;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.6s ease-out 2.5s forwards;
+      }
+      .issue-num {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 800; letter-spacing: 4px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out 2.6s forwards;
+      }
+
+      /* ═══════ KEYFRAMES ═══════ */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fadeInMuted {
+        from { opacity: 0; }
+        to { opacity: 0.55; }
+      }
+      @keyframes sweep {
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes cursorBlink {
+        0%, 49% { opacity: 0; }
+        50%, 100% { opacity: 1; }
+      }
+      @keyframes statusPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      @keyframes glitchA {
+        0%, 88%, 100% { opacity: 0; }
+        89% { opacity: 0.7; }
+        89.5% { opacity: 0; }
+        91% { opacity: 0.5; }
+        92% { opacity: 0; }
+        95% { opacity: 0.4; }
+        95.5% { opacity: 0; }
+      }
+      @keyframes glitchB {
+        0%, 88%, 100% { opacity: 0; }
+        90% { opacity: 0.6; }
+        90.5% { opacity: 0; }
+        92.5% { opacity: 0.4; }
+        93% { opacity: 0; }
+        95.3% { opacity: 0.3; }
+        95.7% { opacity: 0; }
+      }
+
+      /* Draw-in then tail-follows effect (snake) */
+      @keyframes drawChase {
+        0%   { stroke-dashoffset: 100; }  /* hidden pre-draw */
+        35%  { stroke-dashoffset: 0;   }  /* fully drawn */
+        55%  { stroke-dashoffset: 0;   }  /* held */
+        90%  { stroke-dashoffset: -100;}  /* tail chased, gone */
+        100% { stroke-dashoffset: -100;}  /* rest until next cycle */
+      }
+    </style>
+  </defs>
+
+  <!-- ═══════ FOUNDATION ═══════ -->
+  <rect class="bg" width="1600" height="500"/>
+
+  <!-- Editorial bleed lines -->
+  <line class="bleed-line" x1="60" y1="40" x2="1540" y2="40"/>
+  <line class="bleed-line" x1="60" y1="480" x2="1540" y2="480"/>
+
+  <!-- Amber accent bar -->
+  <rect class="accent-bar" x="1300" y="36" width="240" height="6"/>
+
+  <!-- ═══════ BACKGROUND NOISE MARKS ═══════ -->
+  <!-- Overflowing 45° diagonals — extend past frame edges -->
+  <line class="mark m1" pathLength="100" x1="-80" y1="80"  x2="280"  y2="440"/>
+  <line class="mark mark-amber m2" pathLength="100" x1="1400" y1="-40" x2="1700" y2="260"/>
+  <line class="mark m3" pathLength="100" x1="-40" y1="480" x2="340"  y2="100"/>
+  <line class="mark m4" pathLength="100" x1="1200" y1="540" x2="1680" y2="60"/>
+  <line class="mark mark-electric m5" pathLength="100" x1="720"  y1="-40" x2="1080" y2="320"/>
+  <line class="mark m6" pathLength="100" x1="1080" y1="540" x2="1440" y2="180"/>
+  <line class="mark m7" pathLength="100" x1="-40" y1="280" x2="260"  y2="-20"/>
+
+  <!-- Overflowing zig-zags — longer spans, sharp miters -->
+  <polyline class="mark m8" pathLength="100" points="-40,160 40,120 120,160 200,120 280,160 360,120 440,160"/>
+  <polyline class="mark mark-amber m9" pathLength="100" points="1040,340 1120,300 1200,340 1280,300 1360,340 1440,300 1520,340 1600,300 1680,340"/>
+  <polyline class="mark m10" pathLength="100" points="420,440 500,400 580,440 660,400 740,440 820,400 900,440 980,400"/>
+  <polyline class="mark mark-electric m11" pathLength="100" points="-40,340 40,380 120,340 200,380 280,340 360,380"/>
+  <polyline class="mark m12" pathLength="100" points="1260,60 1340,20 1420,60 1500,20 1580,60 1660,20"/>
+
+  <!-- ═══════ TOP META ═══════ -->
+  <text class="top-name" x="60" y="80">GRAY · GAN-ERDENE MISHIGSUREN</text>
+  <text class="top-coords" x="60" y="100">ULAANBAATAR, MONGOLIA · 47.91°N 106.91°E · UTC+8</text>
+
+  <!-- ═══════ STATUS ═══════ -->
+  <circle class="status-dot" cx="1385" cy="76" r="6"/>
+  <text class="status-text" x="1400" y="81">LIVE · MMXXVI</text>
+  <text class="status-sub" x="1540" y="100" text-anchor="end">ISSUE 002 · BRUTALIST EDITION</text>
+
+  <!-- ═══════ GIANT 910 LOGO ═══════ -->
+  <g transform="translate(420, 340)">
+    <text class="logo-main" text-anchor="middle">910</text>
+    <text class="logo-glitch-cyan" text-anchor="middle">910</text>
+    <text class="logo-glitch-red" text-anchor="middle">910</text>
+  </g>
+
+  <!-- ═══════ BLINKING CURSOR ═══════ -->
+  <rect class="cursor" x="700" y="240" width="22" height="110"/>
+
+  <!-- ═══════ AMBER UNDERLINE SWEEP ═══════ -->
+  <line class="underline-sweep" x1="130" y1="370" x2="720" y2="370"/>
+
+  <!-- ═══════ RIGHT LABELS ═══════ -->
+  <text class="label-big lb1" x="860" y="200">INFRASTRUCTURE</text>
+  <text class="label-big lb2" x="860" y="244">BUILDER</text>
+  <text class="label-cross" x="860" y="296">×</text>
+  <text class="label-big lb3" x="860" y="340">CREATIVE</text>
+  <text class="label-big lb4" x="860" y="384">DEVELOPER</text>
+
+  <!-- ═══════ BOTTOM DIVIDER ═══════ -->
+  <line class="divider" x1="60" y1="420" x2="1540" y2="420"/>
+
+  <!-- ═══════ NOW ═══════ -->
+  <text class="now-label" x="60" y="445">NOW</text>
+  <text class="now-text" x="60" y="465">XOS v1.0 · multi-tenant saas · 15 frontend channels · 77 components</text>
+
+  <!-- ═══════ QUOTE ═══════ -->
+  <text class="quote" x="1200" y="465" text-anchor="end">"prototype is the product"</text>
+
+  <!-- ═══════ ISSUE STAMP ═══════ -->
+  <text class="issue-num" x="1540" y="465" text-anchor="end">910.STUDIO</text>
+
+</svg>

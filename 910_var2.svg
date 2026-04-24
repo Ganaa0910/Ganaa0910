@@ -1,0 +1,317 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500">
+  <defs>
+    <style>
+      /* ═══════ BASE ═══════ */
+      .bg { fill: #0D1117; }
+      .bleed-line { stroke: #21262d; stroke-width: 1; opacity: 0; animation: fadeIn 1s ease-out 0.3s forwards; }
+      .accent-bar { fill: #f59e0b; opacity: 0; animation: fadeIn 0.6s ease-out 0.8s forwards; }
+
+      /* ═══════ CONCENTRIC CONTOUR FIELD (VOMERO-inspired) ═══════ */
+      /* Two animations per ring: drawRing (once, on load) + ripple (infinite, staggered = traveling wave) */
+      .ring {
+        stroke: #F0EDE8;
+        stroke-width: 2.5;
+        fill: none;
+        opacity: 0.14;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation:
+          drawRing 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+          rippleAmber 9.5s ease-in-out infinite;
+      }
+
+      /* Ripple delays staggered by 0.22s so wave travels outward over ~3.3s, */
+      /* then ~6.2s of idle before the next wave triggers. Feels like occasional pings. */
+      .rg1  { animation-delay: 0.05s, 3.00s; }
+      .rg2  { animation-delay: 0.12s, 3.22s; }
+      .rg3  { animation-delay: 0.20s, 3.44s; }
+      .rg4  { animation-delay: 0.28s, 3.66s; }
+      .rg5  { animation-delay: 0.36s, 3.88s; }
+      .rg6  { animation-delay: 0.45s, 4.10s; }
+      .rg7  { animation-delay: 0.54s, 4.32s; }
+      .rg8  { animation-delay: 0.64s, 4.54s; }
+      .rg9  { animation-delay: 0.74s, 4.76s; }
+      .rg10 { animation-delay: 0.84s, 4.98s; }
+      .rg11 { animation-delay: 0.95s, 5.20s; }
+      .rg12 { animation-delay: 1.06s, 5.42s; }
+      .rg13 { animation-delay: 1.18s, 5.64s; }
+      .rg14 { animation-delay: 1.30s, 5.86s; }
+      .rg15 { animation-delay: 1.42s, 6.08s; }
+      .rg16 { animation-delay: 1.55s, 6.30s; }
+
+      /* ═══════ WORDMARK (nineten·o = 9·10·0 custom glyphs) ═══════ */
+      .logo-wordmark {
+        opacity: 0;
+        animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+      }
+      .logo-wordmark path { fill: #F0EDE8; }
+
+      /* ═══════ PLANETS (orbit the wordmark "sun" along elliptical paths) ═══════ */
+      .planet {
+        opacity: 0;
+        animation: fadeIn 1s ease-out 3s forwards;
+      }
+
+      /* ═══════ TAGLINE ═══════ */
+      .tagline {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 18px; font-weight: 800; letter-spacing: 8px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 2s forwards;
+      }
+      .tagline-cross { fill: #f59e0b; }
+
+      /* ═══════ TOP META ═══════ */
+      .top-name {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 15px; font-weight: 800; letter-spacing: 6px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out 0.5s forwards;
+      }
+      .top-coords {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 500; letter-spacing: 2px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.7s ease-out 0.7s forwards;
+      }
+
+      /* ═══════ STATUS ═══════ */
+      .status-dot {
+        fill: #3366FF;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 1s forwards, statusPulse 1.8s ease-in-out 1s infinite;
+      }
+      .status-text {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 12px; font-weight: 800; letter-spacing: 4px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.7s ease-out 1s forwards;
+      }
+      .status-sub {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 500; letter-spacing: 2px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.7s ease-out 1.2s forwards;
+      }
+
+      /* ═══════ SPINE MARGINALIA (rotated edge text) ═══════ */
+      .spine {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 10px; font-weight: 700; letter-spacing: 6px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.8s ease-out 2.3s forwards;
+      }
+
+      /* ═══════ REGISTRATION MARK (editorial signature) ═══════ */
+      .reg-mark {
+        stroke: #F0EDE8; stroke-width: 1; fill: none;
+        opacity: 0;
+        animation: fadeInMuted 0.6s ease-out 2.6s forwards;
+      }
+      .reg-label {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 9px; font-weight: 700; letter-spacing: 3px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.6s ease-out 2.7s forwards;
+      }
+
+      /* ═══════ BOTTOM ═══════ */
+      .divider { stroke: #21262d; stroke-width: 2; opacity: 0; animation: fadeIn 1s ease-out 2.1s forwards; }
+      .now-label {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 800; letter-spacing: 5px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.6s ease-out 2.3s forwards;
+      }
+      .now-text {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 14px; font-weight: 600;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out 2.4s forwards;
+      }
+      .quote {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 13px; font-weight: 500; font-style: italic;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeInMuted 0.6s ease-out 2.5s forwards;
+      }
+      .issue-num {
+        font-family: 'JetBrains Mono','SF Mono',Consolas,monospace;
+        font-size: 11px; font-weight: 800; letter-spacing: 4px;
+        fill: #F0EDE8;
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out 2.6s forwards;
+      }
+
+      /* ═══════ KEYFRAMES ═══════ */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes fadeInMuted {
+        from { opacity: 0; }
+        to { opacity: 0.55; }
+      }
+      @keyframes drawRing {
+        to { stroke-dashoffset: 0; }
+      }
+      /* Ripple pulse: short active window (~2s swell) + long idle (~7.5s) per ring. */
+      /* With 9.5s cycle, ring sits at baseline for most of each cycle. */
+      @keyframes rippleAmber {
+        0%, 22%, 100% {
+          opacity: 0.14;
+          stroke: #F0EDE8;
+          stroke-width: 2.5;
+        }
+        8% {
+          opacity: 0.65;
+          stroke: #f59e0b;
+          stroke-width: 3.5;
+        }
+        18% {
+          opacity: 0.22;
+          stroke: #F0EDE8;
+          stroke-width: 2.5;
+        }
+      }
+      @keyframes statusPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+    </style>
+  </defs>
+
+  <!-- ═══════ FOUNDATION ═══════ -->
+  <rect class="bg" width="1600" height="500"/>
+
+  <!-- Editorial bleed lines -->
+  <line class="bleed-line" x1="60" y1="40" x2="1540" y2="40"/>
+  <line class="bleed-line" x1="60" y1="480" x2="1540" y2="480"/>
+
+  <!-- Amber accent bar (top-right signal) -->
+  <rect class="accent-bar" x="1300" y="36" width="240" height="6"/>
+
+  <!-- ═══════ CONCENTRIC CONTOUR FIELD (VOMERO background) ═══════ -->
+  <!-- 16 concentric ovals, pathLength=100 normalizes draw-in animation, centered on viewBox center -->
+  <ellipse class="ring rg1" cx="800" cy="250" rx="40"   ry="15"  pathLength="100"/>
+  <ellipse class="ring rg2" cx="800" cy="250" rx="75"   ry="28"  pathLength="100"/>
+  <ellipse class="ring rg3" cx="800" cy="250" rx="115"  ry="43"  pathLength="100"/>
+  <ellipse class="ring rg4" cx="800" cy="250" rx="160"  ry="60"  pathLength="100"/>
+  <ellipse class="ring rg5" cx="800" cy="250" rx="210"  ry="79"  pathLength="100"/>
+  <ellipse class="ring rg6" cx="800" cy="250" rx="265"  ry="100" pathLength="100"/>
+  <ellipse class="ring rg7" cx="800" cy="250" rx="325"  ry="122" pathLength="100"/>
+  <ellipse class="ring rg8" cx="800" cy="250" rx="390"  ry="147" pathLength="100"/>
+  <ellipse class="ring rg9" cx="800" cy="250" rx="460"  ry="173" pathLength="100"/>
+  <ellipse class="ring rg10" cx="800" cy="250" rx="535"  ry="201" pathLength="100"/>
+  <ellipse class="ring rg11" cx="800" cy="250" rx="615"  ry="231" pathLength="100"/>
+  <ellipse class="ring rg12" cx="800" cy="250" rx="700"  ry="263" pathLength="100"/>
+  <ellipse class="ring rg13" cx="800" cy="250" rx="790"  ry="297" pathLength="100"/>
+  <ellipse class="ring rg14" cx="800" cy="250" rx="885"  ry="333" pathLength="100"/>
+  <ellipse class="ring rg15" cx="800" cy="250" rx="985"  ry="370" pathLength="100"/>
+  <ellipse class="ring rg16" cx="800" cy="250" rx="1090" ry="410" pathLength="100"/>
+
+  <!-- ═══════ PLANETS (orbiting the 910 sun along actual ring paths) ═══════ -->
+  <!-- Each planet rides exactly on one of the contour rings. Orbit ellipses match ring rx/ry. -->
+  <!-- Mercury → rg2 (75, 28) · Earth → rg5 (210, 79) · Mars → rg8 (390, 147) · Jupiter → rg10 (535, 201) · Saturn → rg12 (700, 263) -->
+  <defs>
+    <path id="orbit-mercury" d="M 853 270 A 75 28 0 1 0 747 230 A 75 28 0 1 0 853 270 Z"/>
+    <path id="orbit-earth"   d="M 652 306 A 210 79 0 1 0 948 194 A 210 79 0 1 0 652 306 Z"/>
+    <path id="orbit-mars"    d="M 800 103 A 390 147 0 1 0 800 397 A 390 147 0 1 0 800 103 Z"/>
+    <path id="orbit-jupiter" d="M 297 181 A 535 201 0 1 0 1303 319 A 535 201 0 1 0 297 181 Z"/>
+    <path id="orbit-saturn"  d="M 1336 81 A 700 263 0 1 0 264 419 A 700 263 0 1 0 1336 81 Z"/>
+  </defs>
+
+  <!-- Mercury — fast inner, amber -->
+  <circle class="planet" r="4" fill="#f59e0b">
+    <animateMotion dur="9s" begin="3s" repeatCount="indefinite">
+      <mpath href="#orbit-mercury"/>
+    </animateMotion>
+  </circle>
+
+  <!-- Earth -->
+  <circle class="planet" r="5" fill="#F0EDE8">
+    <animateMotion dur="18s" begin="3s" repeatCount="indefinite">
+      <mpath href="#orbit-earth"/>
+    </animateMotion>
+  </circle>
+
+  <!-- Mars -->
+  <circle class="planet" r="4" fill="#F0EDE8">
+    <animateMotion dur="28s" begin="3s" repeatCount="indefinite">
+      <mpath href="#orbit-mars"/>
+    </animateMotion>
+  </circle>
+
+  <!-- Jupiter — biggest, slow -->
+  <circle class="planet" r="8" fill="#F0EDE8">
+    <animateMotion dur="48s" begin="3s" repeatCount="indefinite">
+      <mpath href="#orbit-jupiter"/>
+    </animateMotion>
+  </circle>
+
+  <!-- Saturn — outer, amber, slowest. Wrapped in a group so its ring travels with it. -->
+  <g class="planet">
+    <!-- Saturn's ring (amber ellipse around the planet body) -->
+    <ellipse cx="0" cy="0" rx="14" ry="3.5" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+    <ellipse cx="0" cy="0" rx="18" ry="4.5" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+    <!-- Saturn planet body -->
+    <circle cx="0" cy="0" r="6" fill="#f59e0b"/>
+    <animateMotion dur="70s" begin="3s" repeatCount="indefinite">
+      <mpath href="#orbit-saturn"/>
+    </animateMotion>
+  </g>
+
+  <!-- ═══════ TOP META ═══════ -->
+  <text class="top-name" x="60" y="80">GRAY · GAN-ERDENE MISHIGSUREN</text>
+  <text class="top-coords" x="60" y="100">ULAANBAATAR, MONGOLIA · 47.91°N 106.91°E · UTC+8</text>
+
+  <!-- ═══════ STATUS (top-right) ═══════ -->
+  <circle class="status-dot" cx="1385" cy="76" r="6"/>
+  <text class="status-text" x="1400" y="81">LIVE · MMXXVI</text>
+  <text class="status-sub" x="1540" y="100" text-anchor="end">FIG. 002 · CONTOUR EDITION</text>
+
+  <!-- ═══════ REGISTRATION MARK (top-right corner, editorial signature) ═══════ -->
+  <g transform="translate(1540, 140)">
+    <circle class="reg-mark" cx="0" cy="0" r="8"/>
+    <line class="reg-mark" x1="-14" y1="0" x2="14" y2="0"/>
+    <line class="reg-mark" x1="0" y1="-14" x2="0" y2="14"/>
+    <text class="reg-label" x="-22" y="4" text-anchor="end">REG</text>
+  </g>
+
+  <!-- ═══════ LEFT SPINE MARGINALIA (rotated vertical) ═══════ -->
+  <text class="spine" transform="translate(36, 460) rotate(-90)">910.STUDIO · BRUTALIST EDITION · MMXXVI · UB MONGOLIA</text>
+
+  <!-- ═══════ RIGHT SPINE MARGINALIA (rotated vertical) ═══════ -->
+  <text class="spine" transform="translate(1564, 40) rotate(90)">INFRASTRUCTURE × CREATIVE · SOLE PROVIDER · UTC+8</text>
+
+  <!-- ═══════ WORDMARK: nineten·o (custom "910" spelled out) ═══════ -->
+  <!-- Original SVG is 63×9; scale 14.5 → 913.5×130.5, centered on (800, 260) -->
+  <g class="logo-wordmark" transform="translate(343 195) scale(14.5)">
+    <path d="M-1.19209e-06 2.61596H1.56V8.57996H-1.19209e-06V2.61596ZM4.332 2.48396C4.7 2.48396 5.04 2.53196 5.352 2.62796C5.664 2.72396 5.936 2.87196 6.168 3.07196C6.4 3.27196 6.58 3.52796 6.708 3.83996C6.836 4.14396 6.9 4.50796 6.9 4.93196V8.57996H5.34V5.20796C5.34 4.70396 5.216 4.33596 4.968 4.10396C4.728 3.86396 4.332 3.74396 3.78 3.74396C3.364 3.74396 2.988 3.82396 2.652 3.98396C2.316 4.14396 2.044 4.34796 1.836 4.59596C1.628 4.83596 1.508 5.08796 1.476 5.35196L1.464 4.73996C1.504 4.45996 1.596 4.18796 1.74 3.92396C1.884 3.65996 2.076 3.41996 2.316 3.20396C2.564 2.97996 2.856 2.80396 3.192 2.67596C3.528 2.54796 3.908 2.48396 4.332 2.48396ZM10.1083 -4.43459e-05V1.36796H8.29631V-4.43459e-05H10.1083ZM8.41631 2.61596H9.97631V8.57996H8.41631V2.61596ZM11.5312 2.61596H13.0912V8.57996H11.5312V2.61596ZM15.8632 2.48396C16.2312 2.48396 16.5712 2.53196 16.8832 2.62796C17.1952 2.72396 17.4672 2.87196 17.6992 3.07196C17.9312 3.27196 18.1112 3.52796 18.2392 3.83996C18.3672 4.14396 18.4312 4.50796 18.4312 4.93196V8.57996H16.8712V5.20796C16.8712 4.70396 16.7472 4.33596 16.4992 4.10396C16.2592 3.86396 15.8632 3.74396 15.3112 3.74396C14.8952 3.74396 14.5192 3.82396 14.1832 3.98396C13.8472 4.14396 13.5752 4.34796 13.3672 4.59596C13.1592 4.83596 13.0392 5.08796 13.0072 5.35196L12.9952 4.73996C13.0352 4.45996 13.1272 4.18796 13.2712 3.92396C13.4152 3.65996 13.6072 3.41996 13.8472 3.20396C14.0952 2.97996 14.3872 2.80396 14.7232 2.67596C15.0592 2.54796 15.4392 2.48396 15.8632 2.48396ZM25.2876 6.59996H26.7996C26.7356 7.00796 26.5636 7.37196 26.2836 7.69196C26.0116 8.01196 25.6396 8.26396 25.1676 8.44796C24.6956 8.63196 24.1196 8.72396 23.4396 8.72396C22.6796 8.72396 22.0076 8.60396 21.4236 8.36396C20.8396 8.11596 20.3836 7.75996 20.0556 7.29596C19.7276 6.83196 19.5636 6.27196 19.5636 5.61596C19.5636 4.95996 19.7236 4.39996 20.0436 3.93596C20.3636 3.46396 20.8076 3.10396 21.3756 2.85596C21.9516 2.60796 22.6236 2.48396 23.3916 2.48396C24.1756 2.48396 24.8276 2.60796 25.3476 2.85596C25.8676 3.10396 26.2516 3.47996 26.4996 3.98396C26.7556 4.47996 26.8636 5.11596 26.8236 5.89196H21.1356C21.1756 6.19596 21.2876 6.47196 21.4716 6.71996C21.6636 6.96796 21.9196 7.16396 22.2396 7.30796C22.5676 7.45196 22.9556 7.52396 23.4036 7.52396C23.8996 7.52396 24.3116 7.43996 24.6396 7.27196C24.9756 7.09596 25.1916 6.87196 25.2876 6.59996ZM23.3196 3.67196C22.7436 3.67196 22.2756 3.79996 21.9156 4.05596C21.5556 4.30396 21.3236 4.61196 21.2196 4.97996H25.2756C25.2356 4.57996 25.0436 4.26396 24.6996 4.03196C24.3636 3.79196 23.9036 3.67196 23.3196 3.67196ZM27.4823 2.61596H32.1143V3.82796H27.4823V2.61596ZM29.0183 0.983956H30.5783V8.57996H29.0183V0.983956ZM38.4594 6.59996H39.9714C39.9074 7.00796 39.7354 7.37196 39.4554 7.69196C39.1834 8.01196 38.8114 8.26396 38.3394 8.44796C37.8674 8.63196 37.2914 8.72396 36.6114 8.72396C35.8514 8.72396 35.1794 8.60396 34.5954 8.36396C34.0114 8.11596 33.5554 7.75996 33.2274 7.29596C32.8994 6.83196 32.7354 6.27196 32.7354 5.61596C32.7354 4.95996 32.8954 4.39996 33.2154 3.93596C33.5354 3.46396 33.9794 3.10396 34.5474 2.85596C35.1234 2.60796 35.7954 2.48396 36.5634 2.48396C37.3474 2.48396 37.9994 2.60796 38.5194 2.85596C39.0394 3.10396 39.4234 3.47996 39.6714 3.98396C39.9274 4.47996 40.0354 5.11596 39.9954 5.89196H34.3074C34.3474 6.19596 34.4594 6.47196 34.6434 6.71996C34.8354 6.96796 35.0914 7.16396 35.4114 7.30796C35.7394 7.45196 36.1274 7.52396 36.5754 7.52396C37.0714 7.52396 37.4834 7.43996 37.8114 7.27196C38.1474 7.09596 38.3634 6.87196 38.4594 6.59996ZM36.4914 3.67196C35.9154 3.67196 35.4474 3.79996 35.0874 4.05596C34.7274 4.30396 34.4954 4.61196 34.3914 4.97996H38.4474C38.4074 4.57996 38.2154 4.26396 37.8714 4.03196C37.5354 3.79196 37.0754 3.67196 36.4914 3.67196ZM41.1562 2.61596H42.7162V8.57996H41.1562V2.61596ZM45.4882 2.48396C45.8562 2.48396 46.1962 2.53196 46.5082 2.62796C46.8202 2.72396 47.0922 2.87196 47.3242 3.07196C47.5562 3.27196 47.7362 3.52796 47.8642 3.83996C47.9922 4.14396 48.0562 4.50796 48.0562 4.93196V8.57996H46.4962V5.20796C46.4962 4.70396 46.3722 4.33596 46.1242 4.10396C45.8842 3.86396 45.4882 3.74396 44.9362 3.74396C44.5202 3.74396 44.1442 3.82396 43.8082 3.98396C43.4722 4.14396 43.2002 4.34796 42.9922 4.59596C42.7842 4.83596 42.6642 5.08796 42.6322 5.35196L42.6202 4.73996C42.6602 4.45996 42.7522 4.18796 42.8962 3.92396C43.0402 3.65996 43.2322 3.41996 43.4722 3.20396C43.7202 2.97996 44.0122 2.80396 44.3482 2.67596C44.6842 2.54796 45.0642 2.48396 45.4882 2.48396ZM49.7166 4.73996H53.7246V5.91596H49.7166V4.73996ZM58.9222 8.72396C58.1702 8.72396 57.5062 8.60396 56.9302 8.36396C56.3622 8.12396 55.9182 7.77596 55.5982 7.31996C55.2782 6.85596 55.1182 6.28796 55.1182 5.61596C55.1182 4.94396 55.2782 4.37596 55.5982 3.91196C55.9182 3.43996 56.3622 3.08396 56.9302 2.84396C57.5062 2.60396 58.1702 2.48396 58.9222 2.48396C59.6742 2.48396 60.3302 2.60396 60.8902 2.84396C61.4582 3.08396 61.9022 3.43996 62.2222 3.91196C62.5422 4.37596 62.7022 4.94396 62.7022 5.61596C62.7022 6.28796 62.5422 6.85596 62.2222 7.31996C61.9022 7.77596 61.4582 8.12396 60.8902 8.36396C60.3302 8.60396 59.6742 8.72396 58.9222 8.72396ZM58.9222 7.52396C59.3382 7.52396 59.7102 7.45196 60.0382 7.30796C60.3742 7.15596 60.6382 6.93996 60.8302 6.65996C61.0222 6.37196 61.1182 6.02396 61.1182 5.61596C61.1182 5.20796 61.0222 4.85996 60.8302 4.57196C60.6382 4.27596 60.3782 4.05196 60.0502 3.89996C59.7222 3.74796 59.3462 3.67196 58.9222 3.67196C58.5062 3.67196 58.1302 3.74796 57.7942 3.89996C57.4582 4.05196 57.1902 4.27196 56.9902 4.55996C56.7982 4.84796 56.7022 5.19996 56.7022 5.61596C56.7022 6.02396 56.7982 6.37196 56.9902 6.65996C57.1822 6.93996 57.4462 7.15596 57.7822 7.30796C58.1182 7.45196 58.4982 7.52396 58.9222 7.52396Z"/>
+  </g>
+
+  <!-- ═══════ TAGLINE (under 910, amber cross) ═══════ -->
+  <text class="tagline" x="800" y="430" text-anchor="middle">
+    INFRASTRUCTURE <tspan class="tagline-cross">×</tspan> CREATIVE DEVELOPER
+  </text>
+
+  <!-- ═══════ BOTTOM ═══════ -->
+  <line class="divider" x1="60" y1="455" x2="1540" y2="455"/>
+
+  <text class="now-label" x="60" y="475">NOW</text>
+  <text class="now-text" x="110" y="475">XOS v1.0 · multi-tenant saas · 15 channels · 77 components</text>
+
+  <text class="quote" x="1180" y="475" text-anchor="end">"prototype is the product"</text>
+  <text class="issue-num" x="1540" y="475" text-anchor="end">910.STUDIO</text>
+
+</svg>
