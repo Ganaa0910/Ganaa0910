@@ -4,17 +4,11 @@
 
 <br/>
 
-<p align="center">
-  <b>gan-erdene mishigsuren</b> · infrastructure builder · ulaanbaatar (utc+8)
-</p>
-
-<br/>
-
 ### building
 
-- **dreamon** · senior technical architect. multi-tenant saas infra. 15 frontend channels across retail, restaurant, and club verticals.
+- **dreamon** · senior technical architect building the experience layer across retail, restaurant, and club verticals.
 - **910studio** · creative web studio. soul-forged sites for artists and creatives. no templates, no lego sets. [910.studio](https://910.studio)
-- **910build** · the product. prototype is the final artifact, not a handoff.
+- **910build** · the IP. visual component editor, scenario flow builder, animation pipeline. design-to-production without the handoff.
 
 ### stack
 
