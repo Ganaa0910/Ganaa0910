@@ -1,14 +1,18 @@
 <p align="center">
-  <img src="./910_var2.svg" alt="910" width="100%"/>
+  <img src="./910_rubberhose.svg" alt="Gray — 910studio rubber hose banner" width="100%"/>
 </p>
 
 <br/>
 
-### building
+### operating
 
-- **dreamon** · senior technical architect building the experience layer across retail, restaurant, and club verticals.
 - **910studio** · creative web studio. soul-forged sites for artists and creatives. no templates, no lego sets. [910.studio](https://910.studio)
+- **khatun studio** · mongolian commercial agency. finance, b2b, ecom. with sainbileg.
 - **910build** · the IP. visual component editor, scenario flow builder, animation pipeline. design-to-production without the handoff.
+
+### currently
+
+independent. multi-stream by design. full-stack lead on protech retail + nbfi build with unitel partnership. q3 2026 910 pipeline opens.
 
 ### stack
 
@@ -20,9 +24,9 @@ mobile     react native · reanimated 3 · skia
 infra      turborepo · railway · vercel
 ```
 
-### currently
+### thesis
 
-18-week creative web curriculum through may 2026. three.js, shaders, post-processing. goal: make mongolia's creative web stop being embarrassing. bespoke scroll experiences over instagram grids.
+ownership > climbing. equity > salary. brand sovereignty. wake up without an alarm.
 
 ### reach
 
