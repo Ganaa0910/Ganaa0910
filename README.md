@@ -12,21 +12,8 @@
 
 ### currently
 
-independent. multi-stream by design. full-stack lead on protech retail + nbfi build with unitel partnership. q3 2026 910 pipeline opens.
+independent.
 
-### stack
-
-```
-frontend   react · next · typescript · trpc · tailwind
-backend    nestjs · postgres · prisma
-creative   gsap · animejs · three.js · r3f · glsl
-mobile     react native · reanimated 3 · skia
-infra      turborepo · railway · vercel
-```
-
-### thesis
-
-ownership > climbing. equity > salary. brand sovereignty. wake up without an alarm.
 
 ### reach
 
