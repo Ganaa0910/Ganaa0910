@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="./910_rubberhose.svg" alt="Gray — 910studio rubber hose banner" width="100%"/>
-</p>
 
-<br/>
 
 ### operating
 
