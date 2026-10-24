@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./910_globe.svg" alt="910studio — dot-matrix globe banner" width="100%"/>
-</p>
-
 ### operating
 
 - **910studio** · creative web studio. soul-forged sites for artists and creatives. no templates, no lego sets. [910.studio](https://910.studio)
